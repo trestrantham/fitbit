@@ -1,0 +1,2 @@
+defmodule Fitbit do
+end
