@@ -2,31 +2,50 @@ defmodule Fitbit.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :fitbit,
-     version: "0.0.1",
-     elixir: "~> 1.2",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps]
+    [
+      app: :fitbit,
+      version: "0.0.1",
+      elixir: "~> 1.2",
+      description: "A Fitbit Library for Elixir",
+      package: package,
+      build_embedded: Mix.env == :prod,
+      start_permanent: Mix.env == :prod,
+      deps: deps(Mix.env),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: ["coveralls": :test, "coveralls.detail": :test, "coveralls.post": :test]
+    ]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [
+      applications: [:httpoison],
+      mod: {Fitbit, []}
+    ]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
-  defp deps do
-    []
+  defp deps(:dev) do
+    deps(:prod)
+  end
+
+  defp deps(:test) do
+    deps(:dev)
+  end
+
+  defp deps(:prod) do
+    [
+      {:excoveralls, "~> 0.4", only: :test},
+      {:httpoison, "~> 0.8.0" },
+      {:hackney, "~> 1.4.8" }, # not included in hex version of httpoison :(
+      {:mix_test_watch, "~> 0.2", only: :dev},
+      {:poison, "~> 1.5"}
+    ]
+  end
+
+  def package do
+    [
+      maintainers: ["Tres Trantham"],
+      licenses: ["New BSD"],
+      links: %{"GitHub" => "https://github.com/trestrantham/fitbit"}
+    ]
   end
 end
