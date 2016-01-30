@@ -18,3 +18,8 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
           [applications: [:fitbit]]
         end
 
+  3. Add your client details to your configuration:
+
+        config :fitbit,
+          client_id: System.get_env("FITBIT_CLIENT_ID"),
+          client_secret: System.get_env("FITBIT_CLIENT_SECRET")
