@@ -1,4 +1,6 @@
 defmodule Fitbit.Activity do
+  alias Fitbit.Utils
+
   defstruct [:activity_type, :date, :value]
 
   def steps(user_token, start_date, end_date) do
@@ -7,7 +9,7 @@ defmodule Fitbit.Activity do
     case Fitbit.user_request(:get, endpoint, user_token) do
       {:ok, body} ->
         body["activities-steps"]
-        |> parse_response(:steps)
+        |> parse_activities(:steps)
       error ->
         error
     end
@@ -19,18 +21,18 @@ defmodule Fitbit.Activity do
     case Fitbit.user_request(:get, endpoint, user_token) do
       {:ok, body} ->
         body["activities-floors"]
-        |> parse_response(:floors)
+        |> parse_activities(:floors)
       error ->
         error
     end
   end
 
-  defp parse_response(activities, type) do
+  defp parse_activities(activities, type) do
     activities
     |> Enum.map(fn activity ->
         %Fitbit.Activity{
           activity_type: type,
-          date: activity["dateTime"],
+          date: Utils.parse_date(activity["dateTime"]),
           value: activity["value"]
         }
       end)
