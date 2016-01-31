@@ -1,7 +1,10 @@
 defmodule Fitbit.Activity do
   alias Fitbit.Utils
 
-  defstruct [:activity_type, :date, :value]
+  defstruct activity_type: nil, date: nil, value: nil
+  @type t :: %__MODULE__{
+    activity_type: atom, date: %Timex.DateTime{}, value: float
+  }
 
   def steps(user_token, start_date, end_date) do
     endpoint = "activities/steps/date/#{start_date}/#{end_date}"

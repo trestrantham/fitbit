@@ -10,6 +10,17 @@ defmodule Fitbit.User do
     :weight, :weight_unit
   ]
 
+  @type t :: %__MODULE__{
+    about_me: binary, avatar: binary, avatar150: binary, city: binary,
+    country: binary, date_of_birth: %Timex.DateTime{}, display_name: binary,
+    distance_unit: binary, encoded_id: binary, foods_locale: binary,
+    full_name: binary, gender: atom, glucose_unit: binary, height: float,
+    height_unit: binary, locale: binary, member_since: %Timex.DateTime{},
+    nickname: binary, offset_from_utc_millis: integer, start_day_of_week: atom,
+    state: binary, stride_length_running: float, stride_length_walking: float,
+    timezone: binary, water_unit: binary, weight: float, weight_unit: binary
+  }
+
   def profile(user_token) do
     case Fitbit.user_request(:get, "profile", user_token) do
       {:ok, body} ->
