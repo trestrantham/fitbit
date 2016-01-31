@@ -7,6 +7,7 @@ defmodule Fitbit do
   use HTTPoison.Base
 
   def start(_type, _args) do
+    start
     Fitbit.Supervisor.start_link
   end
 
