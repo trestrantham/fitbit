@@ -18,7 +18,10 @@ defmodule Fitbit.Mixfile do
 
   def application do
     [
-      applications: [:httpoison],
+      applications: [
+        :httpoison,
+        :tzdata
+      ],
       mod: {Fitbit, []}
     ]
   end
@@ -37,7 +40,8 @@ defmodule Fitbit.Mixfile do
       {:httpoison, "~> 0.8.0" },
       {:hackney, "~> 1.4.8" }, # not included in hex version of httpoison :(
       {:mix_test_watch, "~> 0.2", only: :dev},
-      {:poison, "~> 1.5"}
+      {:poison, "~> 1.5"},
+      {:timex, "~> 1.0"}
     ]
   end
 
