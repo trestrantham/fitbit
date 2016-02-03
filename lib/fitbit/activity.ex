@@ -2,6 +2,7 @@ defmodule Fitbit.Activity do
   alias Fitbit.Utils
 
   defstruct activity_type: nil, date: nil, value: nil
+
   @type t :: %__MODULE__{
     activity_type: atom, date: %Timex.DateTime{}, value: float
   }

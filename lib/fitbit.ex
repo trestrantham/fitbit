@@ -1,5 +1,6 @@
 defmodule Fitbit.Sample do
   defstruct sample_type: nil, date: nil, value: nil
+
   @type t :: %__MODULE__{
     sample_type: atom, date: %Timex.DateTime{}, value: float
   }
@@ -98,7 +99,6 @@ defmodule Fitbit do
 
     case request(method, endpoint, body, headers) do
       {:ok, response} ->
-        IO.inspect response
         (case response.body do
           %{"errors" => errors} ->
             error = List.first(errors)
