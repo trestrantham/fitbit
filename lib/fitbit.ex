@@ -1,4 +1,6 @@
 defmodule Fitbit.Sample do
+  use Timex
+
   defstruct sample_type: nil, date: nil, value: nil
 
   @type t :: %__MODULE__{

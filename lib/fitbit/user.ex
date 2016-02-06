@@ -1,4 +1,6 @@
 defmodule Fitbit.User do
+  use Timex
+
   alias Fitbit.Utils
 
   defstruct [

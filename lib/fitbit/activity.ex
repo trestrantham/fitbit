@@ -1,4 +1,6 @@
 defmodule Fitbit.Activity do
+  use Timex
+
   alias Fitbit.Utils
 
   defstruct activity_type: nil, date: nil, value: nil
