@@ -4,7 +4,7 @@ defmodule Fitbit.Activity do
   defstruct activity_type: nil, date: nil, value: nil
 
   @type t :: %__MODULE__{
-    activity_type: atom, date: %Timex.DateTime{}, value: float
+    activity_type: atom, date: %DateTime{}, value: float
   }
 
   def steps(user_token, start_date, end_date) do

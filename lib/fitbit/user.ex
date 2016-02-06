@@ -12,10 +12,10 @@ defmodule Fitbit.User do
 
   @type t :: %__MODULE__{
     about_me: binary, avatar: binary, avatar150: binary, city: binary,
-    country: binary, date_of_birth: %Timex.DateTime{}, display_name: binary,
+    country: binary, date_of_birth: %DateTime{}, display_name: binary,
     distance_unit: binary, encoded_id: binary, foods_locale: binary,
     full_name: binary, gender: atom, glucose_unit: binary, height: float,
-    height_unit: binary, locale: binary, member_since: %Timex.DateTime{},
+    height_unit: binary, locale: binary, member_since: %DateTime{},
     nickname: binary, offset_from_utc_millis: integer, start_day_of_week: atom,
     state: binary, stride_length_running: float, stride_length_walking: float,
     timezone: binary, water_unit: binary, weight: float, weight_unit: binary

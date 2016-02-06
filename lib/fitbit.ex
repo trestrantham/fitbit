@@ -2,7 +2,7 @@ defmodule Fitbit.Sample do
   defstruct sample_type: nil, date: nil, value: nil
 
   @type t :: %__MODULE__{
-    sample_type: atom, date: %Timex.DateTime{}, value: float
+    sample_type: atom, date: %DateTime{}, value: float
   }
 end
 
