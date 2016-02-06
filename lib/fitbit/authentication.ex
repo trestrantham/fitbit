@@ -10,7 +10,8 @@ defmodule Fitbit.Authentication do
   def refresh_token(refresh_token) do
     case Fitbit.refresh_request(refresh_token) do
       {:ok, body} ->
-        {:ok, parse_authentication(body)}
+        authentication = parse_authentication(body)
+        {:ok, authentication}
       error ->
         error
     end
