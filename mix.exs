@@ -4,7 +4,7 @@ defmodule Fitbit.Mixfile do
   def project do
     [
       app: :fitbit,
-      version: "0.0.1",
+      version: "0.1",
       elixir: "~> 1.2",
       description: "A Fitbit Library for Elixir",
       package: package,
